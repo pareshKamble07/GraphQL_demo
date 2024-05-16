@@ -1,0 +1,14 @@
+package com.example.graphqltest.network
+
+import okhttp3.Interceptor
+import okhttp3.Response
+
+
+class AuthInterceptor : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val request = chain.request().newBuilder()
+            .addHeader("Authorization", "Bearer eyJraWQiOiJkZWZhdWx0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI3ZjI4YmU2Zi04YjQ1LTRkNzYtYThiZS02ZjhiNDViZDc2MTUiLCJhdWQiOiJiZDlkZWUwMC1iYmZjLTRkY2ItOWRlZS0wMGJiZmMyZGNiOTciLCJkb21haW4iOiIzYWViZjQ5NC1kN2I0LTQyZDItYWJmNC05NGQ3YjRjMmQyMTAiLCJpc3MiOiJodHRwczovL2F1dGgudGVzdC5mbHVlbnRpbmhlYWx0aC5pby9maC10ZXN0L29pZGMiLCJtZWRwbHVtX2lkIjoiNzM2YmNkNTUtNjQ2MC00NTk0LTgxYTktNTE1NDFmNDRmNzczIiwiZXhwIjoxNzE0NzM1ODc4LCJpYXQiOjE3MTQ2NDk0NzgsImp0aSI6IlM1WGc2Q0FSanBXSW96UGF1d1hPVDNXNkZzTVZUQzZPdmhScW9nS3RWeTgifQ.xUtvP3ehGLreC5MN23g9WnrDDb4YzItSrPtuujvuoL0dh2deAkdnVfKoiIdyXAnTW_Vr_bnNFBf1VBwvB1Ej0FUp-kkIAI3ml7ZBDp4OHmnDqM_AyRQOXIRS-04H8No0jypq9M1L5Pn3dCQ7GC7tNoXhPQfAsxT_BRAGYWSKepPtFTPH61ZM34XsviGgNhzDaEbRYibq-AzCjud3eT-WR_v-p3WjqjcYeXpjSQS7e_xkb8v47KCitrmIBUYj4W_cEGsI4e0IR1nB7jbsyCJ0e0pSIjx623ESEzZrtgsjg8AQzm6mWLrvwN78WOnrd42ljjBTcOMHN5X_8pAmzqGeQQ")
+
+        return chain.proceed(request.build())
+    }
+}

@@ -1,0 +1,36 @@
+query CommReqList($patientId: String!, $reminderUrl: String!) {
+    CommunicationRequestList(patient: $patientId) {
+        __typename
+        id
+        DocumentReferenceList(_reference: related) {
+            id
+            meta {
+                tag {
+                    code
+                    system
+                }
+            }
+        }
+
+        payload {
+            contentAttachment {
+                title
+            }
+        }
+
+        occurrenceDateTime
+
+        note {
+            text
+        }
+
+        status
+        frequency: extension(url: $reminderUrl) {
+            extension {
+                valueCode
+                valueBoolean
+                url
+            }
+        }
+    }
+}
